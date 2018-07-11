@@ -20,4 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', 'Auth\RegisterController@register');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout');
-
+Route::post('auth/register', 'AuthController@register');
+Route::post('auth/login', 'AuthController@login');
+Route::group(['middleware' => 'jwt.auth'], function(){
+	Route::get('auth/user', 'AuthController@user');
+	Route::post('auth/logout', 'AuthController@logout');
+});
+Route::group(['middleware' => 'jwt.refresh'], function(){
+	Route::get('auth/refresh', 'AuthController@refresh');
+});
