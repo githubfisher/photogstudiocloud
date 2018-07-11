@@ -127,7 +127,8 @@ return [
                 'users' => \App\GraphQL\Query\UserQuery::class,
             ],
             'mutation' => [
-
+	            'updateUserPassword' => \App\GraphQL\Mutation\UpdateUserPasswordMutation::class,
+	            'updateUserEmail' => \App\GraphQL\Mutation\UpdateUserEmailMutation::class,
             ]
         ]
     ],
